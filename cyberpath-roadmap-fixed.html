@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050a0a">
+<title>CyberPath — IT & Cybersecurity Roadmap</title>
+<style>
+:root{--lime:#9af51b;--muted:#9aaba5;--panel:#0b1414;--line:#334b27;--text:#e8f2ed}
+*{box-sizing:border-box}
+body{margin:0;background:#050a0a;color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input{font:inherit}
+.wrap{max-width:1180px;margin:auto;padding:22px 17px 45px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #1d3027;padding:4px 0 18px}
+.brand{font-size:20px;font-weight:900;letter-spacing:-1px}.lime{color:var(--lime)}
+.navtag{font-size:11px;color:#c5d4cc;border:1px solid #2d4235;padding:8px 11px;border-radius:20px}
+.hero{padding:38px 0 25px;display:grid;grid-template-columns:1.4fr .8fr;gap:22px;align-items:center}
+.eyebrow{color:var(--lime);font-size:11px;letter-spacing:2px;font-weight:800;text-transform:uppercase}
+h1{font-size:clamp(35px,6vw,68px);line-height:.99;letter-spacing:-3px;margin:13px 0 17px;font-weight:900}
+.subtitle{font-size:15px;line-height:1.7;color:#aebeb6;max-width:590px}
+.stats{border:1px solid #2c4328;background:linear-gradient(145deg,#102019,#0a1011);padding:21px;border-radius:18px}
+.statrow{display:flex;justify-content:space-between;align-items:center;margin:8px 0 14px;font-size:13px}
+.big{font-size:33px;font-weight:900;color:var(--lime)}
+.track{height:7px;border-radius:9px;background:#27332d;overflow:hidden}.fill{height:100%;width:0;background:var(--lime);transition:width .25s}
+.btn{border:1px solid #45622c;background:#12200f;color:var(--lime);padding:10px 13px;border-radius:9px;font-size:12px;font-weight:750;cursor:pointer}
+.btn:hover{background:#203716}.btn.active{background:var(--lime);color:#111b0a}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:22px 0 15px}
+h2{font-size:22px;margin:0 0 5px;letter-spacing:-.5px}.muted{color:var(--muted);font-size:12px;line-height:1.6}
+.tools{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
+input[type=search]{flex:1;min-width:170px;background:#0b1414;border:1px solid #2d4235;color:white;padding:11px 13px;border-radius:9px;outline:none}
+input:focus{border-color:var(--lime)}
+.roadgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.module{background:var(--panel);border:1px solid #344e29;border-radius:13px;padding:15px;min-width:0;transition:transform .15s,border-color .15s}
+.module:hover{border-color:var(--lime);transform:translateY(-2px)}
+.modtop{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.num{color:#091006;background:var(--lime);font-size:12px;font-weight:950;border-radius:50%;width:29px;height:29px;display:grid;place-items:center;flex-shrink:0}
+.done{font-size:10px;color:var(--lime);border:1px solid #3b5629;border-radius:20px;padding:5px 7px}
+.symbol{font-size:27px;margin:17px 0 10px}
+.module h3{font-size:14px;letter-spacing:.25px;margin:0 0 8px;line-height:1.35;color:var(--lime)}
+.module p{font-size:11px;line-height:1.65;color:#a9bab1;margin:0 0 13px;min-height:37px}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.chip{font-size:10px;border:1px solid #283a31;color:#c0cec6;padding:4px 6px;border-radius:5px}
+.topic-btn{background:#101b15;cursor:pointer;text-align:left}.topic-btn:hover,.topic-btn:focus{border-color:var(--lime);color:var(--lime);outline:none}
+.learn-topic{display:block;width:100%;text-align:left;background:#101b15;border:1px solid #273c30;color:#d5e2da;border-radius:7px;padding:9px 11px;margin:6px 0;cursor:pointer;font-size:12px;line-height:1.6}.learn-topic:hover{border-color:var(--lime);color:var(--lime)}
+.explain-box{margin-top:14px;border:1px solid #496432;border-radius:10px;padding:14px;background:#101d15}.explain-box h4{margin:0 0 7px;color:var(--lime);font-size:14px}.explain-box p{margin:0;color:#c2d0c8;font-size:12px;line-height:1.75}.explain-box .tip{margin-top:9px;color:#91a79a;font-size:11px;line-height:1.6}
+.modbuttons{display:flex;gap:7px}.modbuttons button{flex:1}
+.smallbtn{background:#111d17;border:1px solid #2a4032;color:#d7e4dc;padding:8px 6px;border-radius:7px;font-size:10px;cursor:pointer}
+.smallbtn:hover{border-color:var(--lime)}
+.specialgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.special{background:#0b1414;border:1px solid #293d33;border-radius:12px;padding:15px 12px;text-align:center;cursor:pointer;transition:.15s}
+.special:hover,.special.chosen{border-color:var(--lime);background:#111e14}
+.emoji{font-size:28px;margin-bottom:10px}.special h3{font-size:12px;margin:0 0 7px;color:#c7f5a0}
+.special p{font-size:10px;line-height:1.6;color:#9eafa6;margin:0}
+.detail{margin-top:14px;background:#0c1713;border:1px solid #425b31;border-radius:12px;padding:18px;display:none}
+.detail.show{display:block}.detail h3{color:var(--lime);margin:0 0 10px;font-size:18px}
+.detail ul{padding-left:19px;color:#c0cec6;font-size:13px;line-height:1.9}.close{float:right}
+.callout{margin-top:23px;padding:20px;border:1px solid #253b30;border-radius:13px;background:linear-gradient(100deg,#102018,#0a1011);display:flex;gap:14px;align-items:flex-start}
+.lamp{font-size:24px}.callout h3{font-size:14px;margin:0 0 7px;color:var(--lime)}
+.callout p{font-size:12px;color:#aebeb6;line-height:1.7;margin:0}
+.foot{border-top:1px solid #1c2c24;margin-top:25px;padding-top:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#82968a;font-size:10px}
+.empty{grid-column:1/-1;padding:25px;text-align:center;color:#9aaba5;border:1px dashed #344b3d;border-radius:12px}
+@media(max-width:850px){.roadgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.specialgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{grid-template-columns:1fr .8fr}}
+@media(max-width:560px){.wrap{padding:15px 12px 32px}.hero{grid-template-columns:1fr;padding-top:30px;gap:20px}h1{letter-spacing:-2px}.roadgrid{grid-template-columns:1fr 1fr;gap:8px}.module{padding:11px}.module p{min-height:0}.specialgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.sectionhead{align-items:start;flex-direction:column}.navtag{font-size:9px}.brand{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="nav"><div class="brand"><span class="lime">CYBER</span>PATH<span style="color:#6f8478">.dev</span></div><div class="navtag">● ROADMAP INTERAKTIF</div></header>
+<section class="hero">
+  <div><div class="eyebrow">Your learning journey starts here</div><h1>IT &amp; Cybersecurity<br><span class="lime">Roadmap.</span></h1><div class="subtitle">Belajar dari dasar sampai memilih spesialisasi. Pahami konsep, latihan di lab yang aman, lalu bangun portofolio dari proyek nyata.</div></div>
+  <div class="stats"><div class="eyebrow">Learning progress</div><div class="statrow"><span>Modul selesai</span><strong id="progressText">0 / 9</strong></div><div class="big" id="progressPct">0%</div><div class="track"><div class="fill" id="progressFill"></div></div><div class="muted" style="margin-top:12px">Tandai modul setelah materi dan latihan dasarnya selesai.</div><button class="btn" id="resetBtn" style="margin-top:15px">↺ Reset progres</button></div>
+</section>
+<section><div class="sectionhead"><div><h2>Learning Path</h2><div class="muted">Ikuti urutan dari fondasi sampai spesialisasi.</div></div><div class="muted">09 MODULES · BEGINNER → ADVANCED</div></div>
+<div class="tools"><input id="search" type="search" placeholder="⌕ Cari materi, contoh: Linux, Python, Wi-Fi..." aria-label="Cari materi"><button class="btn active filter" data-filter="all">Semua</button><button class="btn filter" data-filter="beginner">Dasar</button><button class="btn filter" data-filter="advanced">Lanjutan</button></div><div class="roadgrid" id="roadgrid"></div><div id="quickExplanation" class="explain-box" hidden aria-live="polite"></div>
+<div class="detail" id="detail"><button class="smallbtn close" id="closeDetail">Tutup ✕</button><h3 id="detailTitle"></h3><div class="muted" id="detailIntro"></div><div id="detailList"></div><div class="muted" id="detailPractice"></div></div>
+</section>
+<section style="margin-top:35px"><div class="sectionhead"><div><h2>Pilih Spesialisasi</h2><div class="muted">Pilih jalur yang ingin kamu dalami setelah memahami fondasinya.</div></div></div>
+<div class="specialgrid" id="specialgrid">
+<div class="special" data-special="Blue Team"><div class="emoji">🛡️</div><h3>BLUE TEAM</h3><p>SOC Analyst<br>Incident Response<br>Threat Hunting</p></div>
+<div class="special" data-special="Red Team"><div class="emoji">🧑‍💻</div><h3>RED TEAM</h3><p>Penetration Testing<br>Security Assessment<br>Exploit Research</p></div>
+<div class="special" data-special="Purple Team"><div class="emoji">🔄</div><h3>PURPLE TEAM</h3><p>Kolaborasi deteksi dan pengujian pertahanan</p></div>
+<div class="special" data-special="Cloud Security"><div class="emoji">☁️</div><h3>CLOUD SECURITY</h3><p>AWS · Azure · GCP<br>Cloud IAM &amp; Security</p></div>
+<div class="special" data-special="GRC"><div class="emoji">📋</div><h3>GRC</h3><p>Risk · Compliance<br>Policy · ISO 27001</p></div>
+</div><div class="detail" id="specialDetail"><button class="smallbtn close" id="closeSpecial">Tutup ✕</button><h3 id="specialTitle"></h3><div class="muted" id="specialIntro"></div><ul id="specialList"></ul></div>
+</section>
+<div class="callout"><div class="lamp">💡</div><div><h3>Prinsip belajar yang benar</h3><p>Pahami konsep sebelum mengejar tools. Bangun lab lokal atau gunakan platform latihan yang memang mengizinkan pengujian. Pelajari etika, izin, dan batas sistem sebelum melakukan security testing.</p></div></div>
+<footer class="foot"><span>CYBERPATH.DEV · LEARN BY BUILDING</span><span>Made for curious minds. Keep it ethical.</span></footer>
+</div>
+<script>
+const modules=[
+{n:1,title:"IT FUNDAMENTAL",level:"beginner",icon:"🖥️",desc:"Kenali komputer, sistem operasi, dan cara menyelesaikan masalah dasar.",tags:["Hardware & OS","Windows / Linux","CMD / PowerShell","File system","Virtual Machine","Troubleshooting"],learn:["Komponen hardware dan cara kerja OS","Navigasi file, folder, terminal, dan permission","Dasar Windows dan Linux","Virtual machine dan snapshot","Membaca pesan error dan mencari akar masalah"],practice:"Buat VM Linux, navigasikan terminal, lalu dokumentasikan 5 perintah dasar."},
+{n:2,title:"NETWORKING",level:"beginner",icon:"🌐",desc:"Pahami bagaimana perangkat berkomunikasi di jaringan.",tags:["OSI & TCP/IP","IP & Subnetting","DNS / DHCP","HTTP / HTTPS","Routing","Firewall / VPN","VLAN"],learn:["Model OSI dan TCP/IP","IPv4, subnet mask, gateway, dan DNS","DHCP, routing, port, dan protokol","HTTP versus HTTPS","Fungsi firewall, VPN, dan VLAN"],practice:"Gambar jaringan rumah dan identifikasi alamat IP perangkat milikmu.",tools:"Wireshark · Packet Tracer"},
+{n:3,title:"LINUX",level:"beginner",icon:"🐧",desc:"Kuasai terminal, permission, proses, layanan, dan otomasi dasar.",tags:["Perintah dasar","Permission & User","Process & Service","SSH","Bash scripting"],learn:["Struktur direktori dan command line","User, group, permission, dan sudo","Proses, service, log, dan package","SSH secara aman","Dasar Bash dan variabel"],practice:"Buat direktori proyek, atur permission, dan tulis skrip untuk merapikan file latihan."},
+{n:4,title:"SECURITY FUNDAMENTAL",level:"beginner",icon:"🛡️",desc:"Pondasi keamanan: identitas, data, risiko, dan kontrol akses.",tags:["CIA Triad","AuthN vs AuthZ","Encryption & Hashing","MFA","Access Control","Risk & Threat"],learn:["Confidentiality, Integrity, Availability","Autentikasi versus otorisasi","Enkripsi versus hashing","MFA, least privilege, dan access control","Vulnerability, threat, risk, dan exploit sebagai konsep"],practice:"Analisis risiko akun dummy dan susun daftar kontrol keamanan yang sesuai."},
+{n:5,title:"CYBER ATTACK CONCEPTS",level:"advanced",icon:"🔎",desc:"Kenali pola ancaman agar bisa mencegah dan mendeteksinya.",tags:["Phishing","Social Engineering","Ransomware","Brute Force","Web Attacks","Privilege Escalation","Persistence"],learn:["Siklus serangan dan permukaan serangan","Tanda phishing dan social engineering","Konsep malware dan ransomware","Pencegahan serangan kredensial","Konsep SQLi dan XSS di lingkungan latihan","Prinsip deteksi eskalasi hak akses"],practice:"Analisis email phishing simulasi dan petakan tanda bahaya tanpa membuka tautan."},
+{n:6,title:"WEB SECURITY",level:"advanced",icon:"💻",desc:"Pahami aplikasi web, sesi, autentikasi, dan risiko umum.",tags:["HTTP & Cookies","Session","Authentication","SQL Injection","XSS / CSRF","File Upload","API Security"],learn:["Request, response, header, cookie, dan session","Sesi dan autentikasi yang aman","Gambaran risiko SQL injection, XSS, dan CSRF","Validasi input dan upload file yang aman","API authentication dan access control","Gambaran OWASP Top 10"],practice:"Pelajari aplikasi web lokal yang sengaja rentan, misalnya OWASP Juice Shop, sesuai aturan lab."},
+{n:7,title:"SECURITY TOOLS",level:"advanced",icon:"🧰",desc:"Gunakan tools untuk observasi, audit, dan pengujian yang diizinkan.",tags:["Wireshark","Nmap","Burp Suite","Metasploit","John / Hashcat"],learn:["Wireshark untuk memahami trafik lab","Pemetaan aset yang kamu miliki atau diizinkan","Proxy web untuk menginspeksi aplikasi latihan","Peran framework pengujian dalam lab terkontrol","Prinsip audit hash dan penyimpanan password"],practice:"Inspeksi trafik lokal dan dokumentasikan temuan serta mitigasinya.",tools:"Wireshark · Nmap · Burp Suite Community"},
+{n:8,title:"BLUE TEAM",level:"advanced",icon:"🔵",desc:"Belajar memantau sistem, menyelidiki alert, dan merespons insiden.",tags:["Log Analysis","Windows Event Log","SIEM / EDR","IDS / IPS","Threat Intelligence","Incident Response","Digital Forensics"],learn:["Membaca log Windows dan Linux","Dasar SIEM, EDR, IDS, dan IPS","Mengenali indikator kompromi","Alur triase alert dan respons insiden","Dasar threat intelligence dan digital forensics"],practice:"Buat timeline dari log contoh dan tulis laporan insiden singkat."},
+{n:9,title:"AUTOMATION",level:"advanced",icon:"⚙️",desc:"Automasi tugas keamanan dan analisis data dengan skrip sederhana.",tags:["Python","Log Parsing","API Tools","PowerShell","Bash"],learn:["Dasar Python: variabel, kondisi, loop, fungsi","Membaca dan memfilter file log","Parsing data JSON dan CSV","Menggunakan API dengan aman","Otomasi administrasi yang dapat diaudit"],practice:"Tulis skrip Python untuk menghitung jenis event dari file log contoh.",tools:"Python · PowerShell · Bash"}
+];
+const specialties={
+"Blue Team":{intro:"Fokus pada pertahanan, pemantauan, investigasi, dan respons insiden.",list:["Mulai dari log analysis dan jaringan","Pelajari SIEM, EDR, serta aturan deteksi","Latih triase alert dan penulisan laporan","Bangun portofolio analisis log dan incident response"]},
+"Red Team":{intro:"Fokus pada pengujian keamanan secara terotorisasi untuk menemukan kelemahan.",list:["Kuatkan jaringan, Linux, dan web security","Pelajari metodologi pengujian dan ruang lingkup izin","Berlatih hanya pada lab legal yang disediakan","Dokumentasikan temuan, dampak, dan mitigasi"]},
+"Purple Team":{intro:"Menghubungkan hasil pengujian dengan kemampuan deteksi dan pertahanan.",list:["Pahami taktik ancaman dan kontrol deteksi","Buat skenario simulasi yang aman","Evaluasi apakah log dan alert tersedia","Tingkatkan aturan deteksi berdasarkan hasil uji"]},
+"Cloud Security":{intro:"Mengamankan identitas, konfigurasi, data, dan beban kerja cloud.",list:["Pelajari satu penyedia cloud terlebih dahulu","Pahami IAM, network security, dan logging","Pelajari secret management dan enkripsi","Latih audit konfigurasi pada akun sandbox"]},
+"GRC":{intro:"Mengelola risiko, kebijakan, kontrol, audit, dan kepatuhan keamanan.",list:["Pelajari penilaian risiko dan kontrol keamanan","Pahami dasar ISO 27001 dan dokumentasi","Buat risk register serta kebijakan akses","Latih pemetaan kontrol dan bukti audit"]}
+};
+const storageKey="cyberpath-completed-v1";let completed=new Set();
+try{completed=new Set(JSON.parse(localStorage.getItem(storageKey)||"[]"))}catch(e){}
+let filter="all",query="";
+const $=id=>document.getElementById(id);
+const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+const glossary = {
+"Hardware & OS":"Hardware adalah komponen fisik komputer. Operating system (OS) mengatur perangkat keras, aplikasi, file, dan pengguna.",
+"Windows / Linux":"Windows dan Linux adalah sistem operasi. Linux banyak digunakan pada server dan lingkungan administrasi sistem.",
+"CMD / PowerShell":"CMD dan PowerShell adalah antarmuka perintah Windows untuk menjalankan tugas administrasi. PowerShell juga mendukung otomasi.",
+"File system":"File system adalah cara sistem operasi menyimpan, menamai, dan mengatur file serta folder.",
+"Virtual Machine":"Virtual machine (VM) adalah komputer virtual yang berjalan di komputer fisik. VM berguna untuk latihan tanpa mengubah sistem utama.",
+"Troubleshooting":"Troubleshooting adalah proses mencari penyebab masalah: amati gejala, periksa bukti, uji dugaan, lalu dokumentasikan solusi.",
+"OSI & TCP/IP":"OSI dan TCP/IP adalah model untuk memahami bagaimana data berpindah melalui jaringan, dari koneksi dasar hingga aplikasi.",
+"IP & Subnetting":"Alamat IP mengidentifikasi antarmuka jaringan. Subnetting membagi jaringan menjadi bagian yang lebih kecil dan mudah dikelola.",
+"DNS / DHCP":"DNS menerjemahkan nama domain menjadi alamat IP. DHCP membagikan konfigurasi jaringan seperti IP dan gateway secara otomatis.",
+"HTTP / HTTPS":"HTTP adalah protokol komunikasi web. HTTPS menggunakan TLS untuk membantu melindungi komunikasi antara browser dan server.",
+"Routing":"Routing adalah proses memilih jalur agar paket data sampai ke jaringan tujuan.",
+"Firewall / VPN":"Firewall mengatur lalu lintas berdasarkan aturan. VPN membuat koneksi terenkripsi melalui jaringan lain.",
+"VLAN":"VLAN membagi jaringan fisik menjadi beberapa jaringan logis untuk segmentasi dan pengelolaan akses.",
+"Permission & User":"User dan permission menentukan siapa yang boleh membaca, mengubah, atau menjalankan file dan layanan.",
+"Process & Service":"Process adalah program yang sedang berjalan. Service adalah program latar belakang yang menyediakan fungsi tertentu.",
+"SSH":"SSH adalah protokol terenkripsi untuk mengakses sistem jarak jauh. Gunakan autentikasi kuat dan lindungi kunci akses.",
+"Bash scripting":"Bash scripting menggabungkan perintah shell menjadi skrip untuk mengotomasi tugas berulang.",
+"CIA Triad":"CIA berarti Confidentiality, Integrity, Availability: menjaga kerahasiaan, keutuhan, dan ketersediaan data.",
+"AuthN vs AuthZ":"Authentication memverifikasi identitas. Authorization menentukan sumber daya atau tindakan yang boleh diakses.",
+"Encryption & Hashing":"Enkripsi dapat dibuka dengan kunci yang sesuai. Hashing menghasilkan ringkasan satu arah untuk tujuan seperti pemeriksaan integritas.",
+"MFA":"Multi-factor authentication meminta dua atau lebih jenis bukti identitas, sehingga kata sandi yang bocor saja tidak selalu cukup untuk masuk.",
+"Access Control":"Access control adalah aturan yang menentukan siapa boleh mengakses atau mengubah sumber daya. Berikan hak minimum yang diperlukan.",
+"Risk & Threat":"Threat adalah potensi penyebab kerugian, vulnerability adalah kelemahan, dan risk mempertimbangkan kemungkinan serta dampaknya.",
+"Phishing":"Phishing adalah penipuan melalui pesan atau situs palsu untuk mendorong korban memberikan informasi atau melakukan tindakan tertentu.",
+"Social Engineering":"Social engineering memanipulasi kepercayaan atau kebiasaan manusia untuk mendapatkan akses atau informasi.",
+"Ransomware":"Ransomware adalah malware yang dapat mengunci atau mengenkripsi data. Cadangan teruji, pembaruan, dan pembatasan akses membantu mengurangi risiko.",
+"Brute Force":"Brute force mencoba banyak kemungkinan kredensial. Kata sandi unik, MFA, dan pembatasan percobaan membantu mengurangi risiko.",
+"Web Attacks":"Serangan web memanfaatkan kelemahan aplikasi atau konfigurasi. Pengujian hanya boleh dilakukan pada sistem yang kamu miliki atau diizinkan.",
+"Privilege Escalation":"Privilege escalation terjadi ketika akun atau proses memperoleh hak akses lebih tinggi dari yang semestinya.",
+"Persistence":"Persistence adalah upaya membuat akses atau program tetap aktif. Tim pertahanan mencari perubahan sistem yang tidak biasa.",
+"HTTP & Cookies":"Cookie menyimpan data kecil di browser. Cookie sesi perlu dilindungi dengan pengaturan keamanan yang sesuai.",
+"Session":"Session mempertahankan keadaan pengguna di antara permintaan web. Token sesi perlu dilindungi dan memiliki masa berlaku yang sesuai.",
+"Authentication":"Autentikasi memverifikasi identitas pengguna atau layanan, misalnya melalui kata sandi, passkey, atau MFA.",
+"SQL Injection":"SQL injection terjadi saat input pengguna diperlakukan sebagai bagian perintah SQL. Parameterized queries membantu mencegahnya.",
+"XSS / CSRF":"XSS menyisipkan skrip ke halaman web. CSRF menipu browser pengguna yang sudah masuk agar mengirim permintaan yang tidak diinginkan.",
+"File Upload":"Keamanan unggahan mencakup pemeriksaan tipe dan ukuran, nama file aman, serta penyimpanan yang tidak mengeksekusi file unggahan.",
+"API Security":"API security melindungi antarmuka aplikasi dengan autentikasi, otorisasi, validasi input, pembatasan laju, dan logging.",
+"Wireshark":"Wireshark menangkap dan memeriksa paket jaringan untuk membantu memahami trafik. Analisis hanya pada jaringan yang diizinkan.",
+"Nmap":"Nmap membantu memetakan host dan layanan pada jaringan. Gunakan hanya pada sistem yang kamu miliki atau punya izin untuk diuji.",
+"Burp Suite":"Burp Suite membantu memeriksa permintaan dan respons aplikasi web. Gunakan pada aplikasi latihan atau sistem berizin.",
+"Metasploit":"Metasploit adalah framework untuk memvalidasi kelemahan keamanan dalam lingkungan pengujian terkontrol dan berizin.",
+"John / Hashcat":"John the Ripper dan Hashcat digunakan untuk audit kata sandi berbasis hash. Gunakan hanya pada data yang kamu berhak audit.",
+"Log Analysis":"Log analysis memeriksa catatan kejadian untuk menemukan pola, anomali, dan petunjuk penyelidikan.",
+"Windows Event Log":"Windows Event Log menyimpan catatan kejadian sistem, keamanan, dan aplikasi untuk membantu investigasi.",
+"SIEM / EDR":"SIEM mengumpulkan dan menghubungkan log. EDR memantau aktivitas endpoint untuk membantu mendeteksi dan merespons ancaman.",
+"IDS / IPS":"IDS mendeteksi aktivitas mencurigakan. IPS dapat membantu mencegah aktivitas tersebut berdasarkan kebijakan.",
+"Threat Intelligence":"Threat intelligence adalah informasi tentang ancaman, indikator, dan taktik yang membantu tim membuat keputusan pertahanan.",
+"Incident Response":"Incident response adalah proses terencana untuk mendeteksi, membatasi, menangani, dan mengambil pelajaran dari insiden keamanan.",
+"Digital Forensics":"Digital forensics mengumpulkan dan menganalisis bukti digital sambil menjaga integritas serta dokumentasi penanganannya.",
+"Python":"Python adalah bahasa pemrograman yang sering dipakai untuk mengolah data, membaca log, dan membuat otomasi.",
+"Log Parsing":"Log parsing mengubah baris log menjadi data terstruktur agar lebih mudah difilter dan dianalisis.",
+"API Tools":"API tools membantu program berkomunikasi dengan layanan lain. Lindungi token dan gunakan hak akses minimum.",
+"PowerShell":"PowerShell adalah shell dan bahasa scripting untuk administrasi serta otomasi sistem Windows.",
+"Bash":"Bash adalah shell yang umum pada Linux dan Unix untuk menjalankan perintah dan skrip."
+};
+function explainTopic(topic, moduleNumber) {
+  const box = $("quickExplanation");
+  const note = glossary[topic] || `“${topic}” adalah salah satu konsep dalam materi ini. Pelajari definisinya, fungsi utamanya, contoh penggunaan, serta risiko dan cara mengamankannya.`;
+  const mod = modules.find(m => m.n === Number(moduleNumber));
+  box.innerHTML = `<h4>${escapeHTML(topic)}</h4><p>${escapeHTML(note)}</p><div class="tip">${mod ? "Bagian roadmap: " + escapeHTML(mod.title) + ". " : ""}Tips: catat istilah penting dan praktikkan hanya pada perangkat atau lab yang kamu punya izin untuk gunakan.</div>`;
+  box.hidden = false;
+  box.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+
+function render(){
+ const list=modules.filter(m=>(filter==="all"||m.level===filter)&&[m.title,m.desc,...m.tags].join(" ").toLowerCase().includes(query.toLowerCase()));
+ $("roadgrid").innerHTML=list.length?list.map(m=>`<article class="module"><div class="modtop"><span class="num">${m.n}</span><span class="done" style="${completed.has(m.n)?"":"color:#82968a"}">${completed.has(m.n)?"✓ SELESAI":"MODUL"}</span></div><div class="symbol">${m.icon}</div><h3>${m.title}</h3><p>${m.desc}</p><div class="chips">${m.tags.map(t=>`<button type="button" class="chip topic-btn" data-topic="${escapeHTML(t)}" data-module="${m.n}" title="Klik untuk penjelasan">${escapeHTML(t)} ↗</button>`).join("")}</div><div class="modbuttons"><button class="smallbtn" data-detail="${m.n}">Materi ↗</button><button class="smallbtn" data-done="${m.n}">${completed.has(m.n)?"Batalkan ✓":"Tandai ✓"}</button></div></article>`).join(""):'<div class="empty">Materi tidak ditemukan. Coba kata kunci lain.</div>';
+ const count=completed.size,pct=Math.round(count/modules.length*100);
+ $("progressText").textContent=count+" / 9";$("progressPct").textContent=pct+"%";$("progressFill").style.width=pct+"%";
+ try{localStorage.setItem(storageKey,JSON.stringify([...completed]))}catch(e){}
+}
+function openModule(n){
+ const m=modules.find(x=>x.n===n);if(!m)return;
+ $("detailTitle").textContent=m.n+". "+m.title;$("detailIntro").textContent=m.desc;
+ $("detailList").innerHTML="<div class=\"muted\" style=\"margin:12px 0 7px\">Klik salah satu poin untuk membaca penjelasannya:</div>"+m.learn.map(x=>`<button type=\"button\" class=\"learn-topic\" data-topic=\"${escapeHTML(x)}\" data-module=\"${m.n}\">• ${escapeHTML(x)}　↗</button>`).join("");
+ $("detailPractice").innerHTML="<strong>Latihan yang disarankan:</strong> "+escapeHTML(m.practice)+(m.tools?"<br><strong>Tools:</strong> "+escapeHTML(m.tools):"");
+ $("detail").classList.add("show");$("detail").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+$("roadgrid").addEventListener("click",e=>{const t=e.target.closest("[data-topic]"),d=e.target.closest("[data-detail]"),c=e.target.closest("[data-done]");if(t){explainTopic(t.dataset.topic,t.dataset.module);return}if(d)openModule(Number(d.dataset.detail));if(c){const n=Number(c.dataset.done);completed.has(n)?completed.delete(n):completed.add(n);render()}});
+$("search").addEventListener("input",e=>{query=e.target.value;render()});
+document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.filter;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));render()}));
+$("detailList").addEventListener("click",e=>{const t=e.target.closest("[data-topic]");if(t)explainTopic(t.dataset.topic,t.dataset.module)});
+$("closeDetail").addEventListener("click",()=>$("detail").classList.remove("show"));
+$("resetBtn").addEventListener("click",()=>{if(confirm("Hapus semua progres belajar?")){completed.clear();render()}});
+document.querySelectorAll(".special").forEach(card=>card.addEventListener("click",()=>{
+ document.querySelectorAll(".special").forEach(x=>x.classList.toggle("chosen",x===card));const s=specialties[card.dataset.special];
+ $("specialTitle").textContent=card.dataset.special;$("specialIntro").textContent=s.intro;
+ $("specialList").innerHTML=s.list.map(x=>`<li>${escapeHTML(x)}</li>`).join("");
+ $("specialDetail").classList.add("show");$("specialDetail").scrollIntoView({behavior:"smooth",block:"nearest"});
+}));
+$("closeSpecial").addEventListener("click",()=>$("specialDetail").classList.remove("show"));
+render();
+</script>
+</body>
+</html>
